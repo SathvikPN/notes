@@ -1,0 +1,142 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/144.0.0.0 Safari/537.36" version="28.2.9">
+  <diagram id="p4wBsS346BWaYgizdQw7" name="Page-2">
+    <mxGraphModel dx="3266" dy="1085" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-80" value="Client (Browser)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="-621" y="76" width="150" height="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-81" value="Server (Website)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="-124" y="76" width="150" height="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-82" value="Hacker (Man-in-the-Middle)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;portConstraint=eastwest;newEdgeStyle={&quot;edgeStyle&quot;:&quot;elbowEdgeStyle&quot;,&quot;elbow&quot;:&quot;vertical&quot;,&quot;curved&quot;:0,&quot;rounded&quot;:0};size=65;" vertex="1" parent="1">
+          <mxGeometry x="346" y="76" width="225" height="1260" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-83" value="alt" style="shape=umlFrame;dashed=1;pointerEvents=0;dropTarget=0;strokeColor=#B3B3B3;height=20;width=30" vertex="1" parent="1">
+          <mxGeometry x="-557" y="1059" width="519" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-84" value="[MACs Match]" style="text;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-83">
+          <mxGeometry x="30" width="489" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-85" value="[MACs Mismatch (Tamper Detected)]" style="shape=line;dashed=1;whiteSpace=wrap;verticalAlign=top;labelPosition=center;verticalLabelPosition=middle;align=center;strokeColor=#B3B3B3;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-83">
+          <mxGeometry y="96" width="519" height="4" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-86" value="client_hello (Random_C, Supported_Ciphers)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="4dTwjJDl6zw9wYC4ippH-80" target="4dTwjJDl6zw9wYC4ippH-81">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-289" y="226" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-87" value="1" style="ellipse;aspect=fixed;fillColor=#000000;align=center;fontColor=#FFFFFF;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-86">
+          <mxGeometry width="14" height="14" relative="1" as="geometry">
+            <mxPoint x="-256" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-88" value="server_hello (Random_S, Digital_Certificate, Public_Key_S)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="4dTwjJDl6zw9wYC4ippH-81" target="4dTwjJDl6zw9wYC4ippH-80">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-286" y="272" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-89" value="2" style="ellipse;aspect=fixed;fillColor=#000000;align=center;fontColor=#FFFFFF;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-88">
+          <mxGeometry width="14" height="14" relative="1" as="geometry">
+            <mxPoint x="242" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-90" value="Encrypt(Pre_Master_Secret, Public_Key_S)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="4dTwjJDl6zw9wYC4ippH-80" target="4dTwjJDl6zw9wYC4ippH-81">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-289" y="416" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-91" value="3" style="ellipse;aspect=fixed;fillColor=#000000;align=center;fontColor=#FFFFFF;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-90">
+          <mxGeometry width="14" height="14" relative="1" as="geometry">
+            <mxPoint x="-256" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-92" value="Send (encrypted_data + mac_tag)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="4dTwjJDl6zw9wYC4ippH-80" target="4dTwjJDl6zw9wYC4ippH-81">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-289" y="873" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-93" value="4" style="ellipse;aspect=fixed;fillColor=#000000;align=center;fontColor=#FFFFFF;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-92">
+          <mxGeometry width="14" height="14" relative="1" as="geometry">
+            <mxPoint x="-256" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-94" value="200 OK (Process Transaction)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="4dTwjJDl6zw9wYC4ippH-81" target="4dTwjJDl6zw9wYC4ippH-80">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-286" y="1130" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-95" value="5" style="ellipse;aspect=fixed;fillColor=#000000;align=center;fontColor=#FFFFFF;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-94">
+          <mxGeometry width="14" height="14" relative="1" as="geometry">
+            <mxPoint x="242" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-96" value="403 Forbidden (Terminate Connection)" style="verticalAlign=bottom;edgeStyle=elbowEdgeStyle;elbow=vertical;curved=0;rounded=0;endArrow=block;" edge="1" parent="1" source="4dTwjJDl6zw9wYC4ippH-81" target="4dTwjJDl6zw9wYC4ippH-80">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-286" y="1221" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-97" value="6" style="ellipse;aspect=fixed;fillColor=#000000;align=center;fontColor=#FFFFFF;" vertex="1" parent="4dTwjJDl6zw9wYC4ippH-96">
+          <mxGeometry width="14" height="14" relative="1" as="geometry">
+            <mxPoint x="242" y="-7" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-98" value="PHASE 1: THE HANDSHAKE (Establishing Trust &amp; Keys)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-571" y="151" width="547" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-99" value="1. Verify Certificate with Root CA" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-673" y="292" width="255" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-100" value="2. Generate Pre_Master_Secret" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-670" y="341" width="248" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-101" value="Intercepts! But cannot decrypt &#xa;without Server&#39;s Private Key." style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="338" y="436" width="241" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-102" value="PHASE 2: KEY DERIVATION (Local Calculation)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-571" y="504" width="547" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-103" value="session_key = function(Random_C, Random_S, Pre_Master)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-1028" y="553" width="457" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-104" value="session_key = function(Random_C, Random_S, Pre_Master)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-24" y="602" width="457" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-105" value="PHASE 3: SECURE SESSION (Data Transfer &amp; MAC)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-571" y="651" width="547" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-106" value="payload = &quot;Transfer $100&quot;" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-781" y="700" width="210" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-107" value="encrypted_data = encrypt(payload, session_key)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-945" y="749" width="374" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-108" value="mac_tag = create_mac(payload, session_key)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-923" y="798" width="352" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-109" value="Intercepts! Changes data to &quot;$900&quot;.&#xa;Cannot update mac_tag without session_key." style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="284" y="893" width="349" height="68" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-110" value="4. decrypted_payload = decrypt(encrypted_data, session_key)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-287" y="961" width="476" height="49" as="geometry" />
+        </mxCell>
+        <mxCell id="4dTwjJDl6zw9wYC4ippH-111" value="5. local_mac = create_mac(decrypted_payload, session_key)" style="fillColor=#ffff88;strokeColor=#9E916F;" vertex="1" parent="1">
+          <mxGeometry x="-281" y="1010" width="464" height="49" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
