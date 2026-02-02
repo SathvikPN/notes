@@ -1,0 +1,41 @@
+sequenceDiagram
+    autonumber
+    participant C as Client (Browser)
+    participant S as Server (Website)
+    participant H as Hacker (Man-in-the-Middle)
+
+    Note over C, S: PHASE 1: THE HANDSHAKE (Establishing Trust & Keys)
+    
+    C->>S: client_hello (Random_C, Supported_Ciphers)
+    S->>C: server_hello (Random_S, Digital_Certificate, Public_Key_S)
+    
+    Note over C: 1. Verify Certificate with Root CA
+    Note over C: 2. Generate Pre_Master_Secret
+    
+    C->>S: Encrypt(Pre_Master_Secret, Public_Key_S)
+    
+    Note over H: Intercepts! But cannot decrypt <br/>without Server's Private Key.
+
+    Note over C, S: PHASE 2: KEY DERIVATION (Local Calculation)
+    
+    Note left of C: session_key = function(Random_C, Random_S, Pre_Master)
+    Note right of S: session_key = function(Random_C, Random_S, Pre_Master)
+
+    Note over C, S: PHASE 3: SECURE SESSION (Data Transfer & MAC)
+
+    Note left of C: payload = "Transfer $100"
+    Note left of C: encrypted_data = encrypt(payload, session_key)
+    Note left of C: mac_tag = create_mac(payload, session_key)
+
+    C->>S: Send (encrypted_data + mac_tag)
+
+    Note over H: Intercepts! Changes data to "$900".<br/>Cannot update mac_tag without session_key.
+
+    Note over S: 4. decrypted_payload = decrypt(encrypted_data, session_key)
+    Note over S: 5. local_mac = create_mac(decrypted_payload, session_key)
+
+    alt MACs Match
+        S->>C: 200 OK (Process Transaction)
+    else MACs Mismatch (Tamper Detected)
+        S->>C: 403 Forbidden (Terminate Connection)
+    end
