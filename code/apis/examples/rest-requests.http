@@ -1,0 +1,57 @@
+### REST API Examples
+# You can use these with tools like curl or HTTPie
+
+### Get all products
+GET http://localhost:3000/api/products
+
+### Get single product
+GET http://localhost:3000/api/products/1
+
+### Get products by category
+GET http://localhost:3000/api/products?category_id=1
+
+### Get product reviews
+GET http://localhost:3000/api/products/1/reviews
+
+### Get product inventory
+GET http://localhost:3000/api/products/1/inventory
+
+### Get all categories
+GET http://localhost:3000/api/categories
+
+### Get products in category
+GET http://localhost:3000/api/categories/1/products
+
+### Create product
+POST http://localhost:3000/api/products
+Content-Type: application/json
+
+{
+  "name": "Test Product",
+  "description": "A test product",
+  "price": 99.99,
+  "category_id": 1,
+  "image_url": "https://example.com/test.jpg"
+}
+
+### Update product
+PUT http://localhost:3000/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Updated Product",
+  "price": 149.99
+}
+
+### Delete product
+DELETE http://localhost:3000/api/products/1
+
+### Create review
+POST http://localhost:3000/api/products/1/reviews
+Content-Type: application/json
+
+{
+  "rating": 5,
+  "comment": "Great product!",
+  "author": "John Doe"
+}

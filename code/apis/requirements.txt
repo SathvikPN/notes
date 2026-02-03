@@ -1,0 +1,17 @@
+# REST vs GraphQL Demo - Python Dependencies
+
+# REST API Framework
+Flask==3.0.0
+flask-cors==4.0.0
+
+# GraphQL Framework
+strawberry-graphql==0.216.0
+strawberry-graphql[flask
+]==0.216.0
+
+# HTTP Client for testing
+requests==2.31.0
+
+# Development tools
+python-dotenv==1.0.0
+

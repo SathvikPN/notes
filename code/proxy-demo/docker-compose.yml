@@ -1,0 +1,56 @@
+services:
+  # Reverse Proxy Server - Sits in front of backend
+  reverse-proxy:
+    image: nginx:alpine
+    container_name: reverse-proxy-server
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/logs:/var/log/nginx
+    depends_on:
+      - backend
+    networks:
+      - proxy-network
+    restart: unless-stopped
+
+  # Forward Proxy Server - Client-side proxy with filtering
+  forward-proxy:
+    image: nginx:alpine
+    container_name: forward-proxy-server
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./nginx/forward-proxy.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/logs:/var/log/nginx
+    networks:
+      - proxy-network
+    restart: unless-stopped
+
+  # Backend Server - Receives allowed requests
+  backend:
+    build: ./backend
+    container_name: backend-server
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    networks:
+      - proxy-network
+    restart: unless-stopped
+
+  # Client Web Interface - Makes requests
+  client:
+    image: nginx:alpine
+    container_name: client-interface
+    ports:
+      - "8080:80"
+    volumes:
+      - ./client:/usr/share/nginx/html:ro
+    networks:
+      - proxy-network
+    restart: unless-stopped
+
+networks:
+  proxy-network:
+    driver: bridge

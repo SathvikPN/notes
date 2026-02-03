@@ -1,0 +1,285 @@
+# GraphQL Query Examples
+# Use these in GraphiQL at http://localhost:4000
+
+# ============================================
+# BASIC QUERIES
+# ============================================
+
+# Get all products (minimal fields)
+query GetProducts {
+  products {
+    id
+    name
+    price
+  }
+}
+
+# Get single product
+query GetProduct {
+  product(id: 1) {
+    id
+    name
+    description
+    price
+  }
+}
+
+# ============================================
+# NESTED QUERIES
+# ============================================
+
+# Product with category
+query ProductWithCategory {
+  product(id: 1) {
+    name
+    price
+    category {
+      name
+      description
+    }
+  }
+}
+
+# Product with reviews
+query ProductWithReviews {
+  product(id: 1) {
+    name
+    reviews {
+      rating
+      comment
+      author
+    }
+  }
+}
+
+# Product with everything (single request!)
+query ProductComplete {
+  product(id: 1) {
+    name
+    description
+    price
+    category {
+      name
+    }
+    reviews {
+      rating
+      comment
+      author
+    }
+    inventory {
+      quantity
+      warehouse
+    }
+    averageRating
+  }
+}
+
+# ============================================
+# MULTIPLE PRODUCTS WITH NESTED DATA
+# ============================================
+
+# No N+1 problem!
+query ProductsWithReviews {
+  products(limit: 5) {
+    name
+    price
+    reviews {
+      rating
+      comment
+    }
+    averageRating
+  }
+}
+
+# ============================================
+# FILTERING
+# ============================================
+
+# Products by category
+query ProductsByCategory {
+  products(categoryId: 1, limit: 3) {
+    name
+    price
+    category {
+      name
+    }
+  }
+}
+
+# ============================================
+# SEARCH
+# ============================================
+
+query SearchProducts {
+  searchProducts(query: "book") {
+    name
+    price
+    description
+  }
+}
+
+# ============================================
+# ALIASES (Multiple queries in one request)
+# ============================================
+
+query MultipleProducts {
+  laptop: product(id: 1) {
+    name
+    price
+  }
+  mouse: product(id: 2) {
+    name
+    price
+  }
+  book: product(id: 3) {
+    name
+    price
+  }
+}
+
+# ============================================
+# FRAGMENTS (Reusable field sets)
+# ============================================
+
+fragment ProductBasic on Product {
+  id
+  name
+  price
+}
+
+fragment ProductWithCategory on Product {
+  ...ProductBasic
+  category {
+    name
+  }
+}
+
+query UsingFragments {
+  products(limit: 3) {
+    ...ProductWithCategory
+  }
+}
+
+# ============================================
+# VARIABLES
+# ============================================
+
+query GetProductById($productId: Int!) {
+  product(id: $productId) {
+    name
+    price
+    category {
+      name
+    }
+  }
+}
+
+# Variables:
+# {
+#   "productId": 1
+# }
+
+# ============================================
+# MUTATIONS
+# ============================================
+
+# Create product
+mutation CreateProduct($input: ProductInput!) {
+  createProduct(input: $input) {
+    id
+    name
+    price
+    category {
+      name
+    }
+  }
+}
+
+# Variables:
+# {
+#   "input": {
+#     "name": "New Product",
+#     "description": "A new product",
+#     "price": 99.99,
+#     "categoryId": 1,
+#     "imageUrl": "https://example.com/new.jpg"
+#   }
+# }
+
+# Update product
+mutation UpdateProduct($id: Int!, $input: ProductInput!) {
+  updateProduct(id: $id, input: $input) {
+    id
+    name
+    price
+  }
+}
+
+# Variables:
+# {
+#   "id": 1,
+#   "input": {
+#     "name": "Updated Product",
+#     "description": "Updated description",
+#     "price": 149.99,
+#     "categoryId": 1
+#   }
+# }
+
+# Delete product
+mutation DeleteProduct($id: Int!) {
+  deleteProduct(id: $id)
+}
+
+# Variables:
+# {
+#   "id": 1
+# }
+
+# Create review
+mutation CreateReview($input: ReviewInput!) {
+  createReview(input: $input) {
+    id
+    rating
+    comment
+    author
+  }
+}
+
+# Variables:
+# {
+#   "input": {
+#     "productId": 1,
+#     "rating": 5,
+#     "comment": "Excellent product!",
+#     "author": "Jane Doe"
+#   }
+# }
+
+# ============================================
+# INTROSPECTION (Schema exploration)
+# ============================================
+
+# Get all types
+query GetTypes {
+  __schema {
+    types {
+      name
+      kind
+    }
+  }
+}
+
+# Get Product type details
+query GetProductType {
+  __type(name: "Product") {
+    name
+    fields {
+      name
+      type {
+        name
+        kind
+      }
+    }
+  }
+}
